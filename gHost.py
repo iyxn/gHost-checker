@@ -46,6 +46,7 @@ def urlcheck() :
 # handling exceptions
  try:
      url = raw_input('Url (Ctrl+c Untuk Keluar):')
+     print
      rq = requests.get('https://'+url, allow_redirects=False)
  except requests.exceptions.ConnectionError:
      print
