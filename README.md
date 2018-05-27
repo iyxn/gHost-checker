@@ -24,5 +24,5 @@
 #
 # Credit: Hardian 'HardGhost' Alkori
 # Web: HardGhost Security | http://hardghost-sec.blogspot.com
-# Github: http://github.com/ 
+# Github: http://github.com/hardghost07
 
