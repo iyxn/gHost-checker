@@ -1,7 +1,7 @@
 # gHost HTTP Request Checker by HardGhost
-# Tools untuk mengecek http header dan host checker, cocok digunakan untuk mengecek header
-# bug operator 
-#
+# Tools untuk mengecek http header dan host checker, cocok digunakan untuk mengecek header bug operator
+
+
 # Tools ini membutuhkan: 
 # - Python 2.7, Android: qpython (playstore) 
 # - module requests
@@ -18,7 +18,7 @@
 # - buka qpython, pilih qpypi lalu pilih pip dan jalankan
 # - ketik command pip install requests lalu kembali ke menu
 # - buka editor, buka file gHost.py dan jalankan. 
-#
+
 # Note:
 #   kalian harus paham kode HTTP status seperti 200,301,400,403 dll. 
 #
