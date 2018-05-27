@@ -39,15 +39,20 @@ clear
 # opening
 print ' gHost HTTP Header Requests Checker' 
 print 'Bug Report hardghostalkori@gmail.com' 
-print '  | hardghost-sec.blogspot.com |\n'
+print '  | hardghost-sec.blogspot.com |'
+print
+print'Deskripsi Update Terbaru:\n'
+print'- Deteksi Otomatis Protokol HTTP/HTTPS'
+print'- Perbaikan Beberapa Bug\n' 
 
 # membuat blok statemen 
 def urlcheck() :
 # handling exceptions
  try:
-     url = raw_input('Url (Ctrl+c Untuk Keluar):')
-     print
-     rq = requests.get('https://'+url, allow_redirects=False)
+     url = raw_input('Url (Ctrl+c Untuk Keluar):') 
+     print    	
+     print 'Checking HTTPS Protocol....\n' 
+     rq = requests.get('https://'+url,timeout=5, allow_redirects=False)
  except requests.exceptions.ConnectionError:
      print
      print'Invalid Hostname\n'
@@ -58,17 +63,33 @@ def urlcheck() :
      print 'Invalid URL\n' 
      while True:
          urlcheck()
+ except requests.exceptions.ReadTimeout:
+     print 'request timed out, but don`t worry,\ni will check http protocol... \n'
+     try:
+         rq = requests.get('http://'+url,timeout=5, allow_redirects=False)
+         print' - - - - - - - - - - - - - - - - - --'
+         print'[!] HTTP Is Alive [!]\n' 
+     except requests.exceptions.ReadTimeout:
+         print'Timeout, connection reset by peer (bug mati)\n'
+         while True:
+             urlcheck() 
  except KeyboardInterrupt:
      print 'Bye Bye....' 
 # Menampilkan Request 
- print'Request Address: ',rq.url
+ print'Request Address:',rq.url
  print'Encoding:', rq.encoding
  try:
-     headers = rq.headers ['Content-Type'] 
+     headers1 = rq.headers ['Content-Type']
+     headers2 = rq.headers ['Connection']
+     headers3 = rq.headers ['Date'] 
  except KeyError:
-     print 'Content-Type: -' 
+     print 'Content-Type: -'
+     print 'Connection: -' 
+     print 'Date: -' 
  else:
-     print 'Content-Type:', headers
+     print 'Content-Type:', headers1
+     print 'Connection:', headers2
+     print 'Date:', headers3
  raw = rq.raw.version
  if raw == 11:
     print 'HTTP Version: HTTP/1.1'
@@ -88,11 +109,33 @@ def urlcheck() :
  print
 
 # menampilkan url yang valid jika status url pertama terjadi redirect url(301,302)
- req2 = requests.get(loc, allow_redirects=True)
+ print 'Checking Redirected Address....\n'
+ try:
+    req2 = requests.get(loc, timeout = 5, allow_redirects=True)
+ except requests.exceptions.ConnectTimeout:
+    print 'Timed Out'
+    urlcheck() 
  print '---------------------------------------' 
  print 'Valid address:', req2.url
  print 'Status: ', req2.status_code
  print 'Encoding:', rq.encoding
+ raw = rq.raw.version
+ if raw == 11:
+    print 'HTTP Version: HTTP/1.1'
+ else:
+    print 'HTTP Version: HTTP/1.0'
+ try:
+     headers1 = rq.headers ['Content-Type']
+     headers2 = rq.headers ['Connection']
+     headers3 = rq.headers ['Date'] 
+ except KeyError:
+     print 'Content-Type: -'
+     print 'Connection: -' 
+     print 'Date: -' 
+ else:
+     print 'Content-Type:', headers1
+     print 'Connection:', headers2
+     print 'Date:', headers3
  print '---------------------------------------\n'
 urlcheck() 
 
