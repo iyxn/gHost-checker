@@ -56,8 +56,18 @@ def urlcheck() :
  except requests.exceptions.ConnectionError:
      print
      print'Invalid Hostname\n'
-     while True:
-         urlcheck()
+     print 'But Don/t Worry, I will check\nHTTP Protocol...\n' 
+     try:
+         rq = requests.get('http://'+url,timeout=5, allow_redirects=False)
+         print '[!] HTTP IS ALIVE [!]\n'
+     except requests.exceptions.ConnectionError:
+         print'Timed Out, Connection reset by peer \n'
+         while True:
+          urlcheck()
+     except requests.exceptions.ReadTimeout:
+          print'Timed Out, Connection reset by peer \n'
+          while True:
+              urlcheck() 
  except requests.exceptions.InvalidURL:
      print
      print 'Invalid URL\n' 
@@ -104,8 +114,14 @@ def urlcheck() :
          urlcheck()
  else:
      print 'Status:', rq.status_code
- loc = rq.headers['Location']
- print 'Redirect To: ', loc
+ try:
+     loc = rq.headers['Location']
+     
+ except KeyError:   
+     print 'Redirect To: -\n' 
+     urlcheck() 
+ else:
+     print 'Redirect To: ', loc
  print
 
 # menampilkan url yang valid jika status url pertama terjadi redirect url(301,302)
@@ -113,7 +129,11 @@ def urlcheck() :
  try:
     req2 = requests.get(loc, timeout = 5, allow_redirects=True)
  except requests.exceptions.ConnectTimeout:
-    print 'Timed Out'
+    print 'HTTP/HTTPS Timed Out'
+    urlcheck()
+ except requests.exceptions.ReadTimeout:
+    print 'HTTP/HTTPS Timed Out' 
+    print '--------------------\n' 
     urlcheck() 
  print '---------------------------------------' 
  print 'Valid address:', req2.url
