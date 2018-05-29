@@ -10,7 +10,7 @@
 # 
 # Komputer(linux)/termux:
 # ketik command : python
-#               : pip install python
+#               : pip install requests
 #               : python gHost.py
 #
 # Android (non termux)(Rekomendasi):
