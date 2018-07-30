@@ -3,14 +3,14 @@
 
 
 # Tools ini membutuhkan: 
-# - Python 2.7, Android: qpython (playstore) 
+# - Python 2.7
 # - module requests
 #
 # *Panduan Instalasi* #
 # 
 # Komputer(linux)/termux:
-# ketik command : python
-#               : pip install requests
+# ketik command : python2
+#               : pip2 install requests
 #               : python gHost.py
 #
 # Android (non termux)(Rekomendasi):
@@ -20,7 +20,7 @@
 # - buka editor, buka file gHost.py dan jalankan. 
 
 # Note:
-#   kalian harus paham kode HTTP status seperti 200,301,400,403 dll. 
+#   kalian harus paham kode HTTP status seperti 200,300,400,500 dll. 
 #
 # Credit: Hardian 'HardGhost' Alkori
 # Web: HardGhost Security | http://hardghost-sec.blogspot.com
