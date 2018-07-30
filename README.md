@@ -17,7 +17,7 @@
 
 #- ketik command di termux python2 gHost. py
 
-#-Masukan Nama file / direktori yang berisi daftar kumpulan host/bug operator (pastikan berformat .txt)
+#-Masukan Nama file / direktori yang berisi daftar kumpulan host/bug operator (pastikan berformat .txt) dan format host harus tanpa http:// atau https//
 
 #-masukan proxy, jika ingin mode direct requests, lewati/enter saja.
 
