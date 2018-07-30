@@ -12,12 +12,16 @@
 # ketik command : python2
 #               : pip2 install requests
 #               : python gHost.py
-#
-# Android (non termux)(Rekomendasi):
-# - download qpython di playstore
-# - buka qpython, pilih qpypi lalu pilih pip dan jalankan
-# - ketik command pip install requests lalu kembali ke menu
-# - buka editor, buka file gHost.py dan jalankan. 
+
+*panduan penggunaan: *
+
+#- ketik command di termux python2 gHost. py
+
+#-Masukan Nama file / direktori yang berisi daftar kumpulan host/bug operator (pastikan berformat .txt)
+
+#-masukan proxy, jika ingin mode direct requests, lewati/enter saja.
+
+#-masukan nama file untuk menyimpan hasil yang berisi bug/host yang hidup(pastikan berformat .txt)
 
 # Note:
 #   kalian harus paham kode HTTP status seperti 200,300,400,500 dll. 
